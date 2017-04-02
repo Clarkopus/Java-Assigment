@@ -14,7 +14,7 @@ public class Exercise1 {
 		String formattedOrder ="";
 		double totalPrice = 0.00;
 		DecimalFormat f = new DecimalFormat("##.00");
-		
+			
 		
 		/* while loop is used to allow the end user to take multiple orders */
 		while(true){
@@ -33,8 +33,8 @@ public class Exercise1 {
 				order_seperated[x] = Character.toString(order.charAt(x));
 			}
 			
-			for(int x=0;x<1; x++){
-				switch(order_seperated[x]){
+			
+				switch(order_seperated[0]){
 				case "m":
 				case "M":
 					formattedOrder += "Medium pizza, ";
@@ -48,7 +48,6 @@ public class Exercise1 {
 				default:
 					break;
 				}
-			}
 			/* x is equal to one this time round to skip the first element */
 			for(int x=1;x<order_seperated.length;x++){
 				switch(order_seperated[x]){
