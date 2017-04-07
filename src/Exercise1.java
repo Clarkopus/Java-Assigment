@@ -91,6 +91,10 @@ public class Exercise1 {
 		
 	}
 	
+	void takeOrder(){
+		
+	}
+	
 	public static void pizzaServiceB(){
 		
 		while(true){
