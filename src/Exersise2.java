@@ -23,6 +23,7 @@ public class Exersise2  {
 		System.out.println("array mean is: " + mean);
 		findDifference(array,difference,mean);
 		returnCoord(difference,coords);
+		System.out.println("The closest element to the mean is: " + array[coords[0]][coords[1]]);
 		return coords;
 	}
 
@@ -30,6 +31,7 @@ public class Exersise2  {
 	public static void main(String[] arguments){
 		
 		double[][] numbers = new double[3][4];
+		
 		numbers[0][0] = 3;
 		numbers[0][1] = -1;
 		numbers[0][2] = -4;
@@ -42,7 +44,9 @@ public class Exersise2  {
 		numbers[2][1] = 2;
 		numbers[2][2] = 4;
 		numbers[2][3] =-9;
-		System.out.println("The co-ords for this element are: " + Arrays.toString(closestToMean(numbers)));
+		int[] coords = closestToMean(numbers);
+		
+		System.out.println("The co-ords for this element are: " + Arrays.toString(coords));
 		
 	}
 	
@@ -77,8 +81,6 @@ public class Exersise2  {
 				if(difference[x][y] <min) {min = difference[x][y];coords[0]=x; coords[1] =y;}
 			}
 		}
-		
-		printArray(difference);
 		return coords;
 	}
 
