@@ -69,19 +69,17 @@ public class Exersise2  {
 	
 	static int[] returnCoord(double[][] difference, int[] coords){
 		double min = Integer.MAX_VALUE;
-		int[] coord = new int[2];
 		int xCord = 0;
 		int yCord = 0;
 		
 		for(int x=0; x<difference.length;x++){
 			for(int y=0;y<difference[0].length;y++){
-				if(difference[x][y] <min) {min = difference[x][y];coord[0]=x; coord[1] =y;}
+				if(difference[x][y] <min) {min = difference[x][y];coords[0]=x; coords[1] =y;}
 			}
 		}
 		
 		printArray(difference);
-		System.out.println(Arrays.toString(coord));
-		return coord;
+		return coords;
 	}
 
 
