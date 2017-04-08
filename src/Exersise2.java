@@ -1,22 +1,21 @@
-import java.util.Random;
-import java.math.*;
-/*TODO -
- * Add a way to check which element is closest to the mean 
- * replace random 2D array solution with a the requested 2D array listed in the Assigment
- * discover a way to keep track of 2D array element co-ords and print them back to the user
- * Possible solution - Hash map that keeps track of each element's co-ord by adding a new element to the map per loop
- * if that element is close to the mean, use the map to print that mapped value*/
-public class Exersise2 {
+/* TODO -
+ * Clean up code by putting a lot of it into other functions */
+
+import java.util.Arrays;
+public class Exersise2  {
 	
 	/* Method to find mean and returns the position of the closest element */
 	public static int[] closestToMean (double[][] array){
-		
+		double[][] difference = new double[3][4];
+		double min = Integer.MAX_VALUE;
+		int[] coord = new int[2];
+		int xCord = 0;
+		int yCord = 0;
 		printArray(array);
 		double sum =0;
 		int count=0;
-		int closestElement;
 		for(int x=0;x<array.length;x++){
-			for(int y=0;y<array.length;y++){
+			for(int y=0;y<array[0].length;y++){
 				sum +=array[x][y];
 				count++;
 			}
@@ -24,24 +23,34 @@ public class Exersise2 {
 		
 		double mean = sum/count;
 		System.out.println("array mean is: " + mean);
-		return null;
+		findDifference(array,difference,mean);
+		
+		for(int x=0; x<difference.length;x++){
+			for(int y=0;y<difference[0].length;y++){
+				if(difference[x][y] <min) {min = difference[x][y];coord[0]=x; coord[1] =y; xCord = x; yCord = y;}
+			}
+		}
+		System.out.println("The closest element is: " + array[xCord][yCord]);
+		return coord;
 	}
+
 	
 	public static void main(String[] arguments){
 		
-		double[][] numbers = new double[4][4];
-		Random rng = new Random();
-		int max = 10;
-		int min =0;
-		for(int col =0;col<4;col++){
-			for( int x =0;x<4;x++){
-				
-				numbers[col][x] = rng.nextInt((max - min) +1) + min;
-				
-			}
-		}
-		
-		closestToMean(numbers);
+		double[][] numbers = new double[3][4];
+		numbers[0][0] = 3;
+		numbers[0][1] = -1;
+		numbers[0][2] = -4;
+		numbers[0][3] = 0;
+		numbers[1][0]= 5;
+		numbers[1][1] = -2;
+		numbers[1][2] = 9;
+		numbers[1][3] = 6;
+		numbers[2][0] =8; 
+		numbers[2][1] = 2;
+		numbers[2][2] = 4;
+		numbers[2][3] =-9;
+		System.out.println("The co-ords for this element is" + Arrays.toString(closestToMean(numbers)));
 		
 	}
 	
@@ -49,10 +58,22 @@ public class Exersise2 {
 		
 		System.out.println("Current Array: ");
 		for(int col=0;col <array.length;col++){
-			for(int row=0;row<array.length;row++){
+			for(int row=0;row<array[0].length;row++){
 				System.out.print(array[col][row] + " ");
 			}
 			System.out.println();
 		}
 	}
+	
+	static void findDifference(double[][] array,double[][] arrayToFindD,double mean){
+		
+		for(int x =0; x<array.length; x++){
+			for(int y=0;y<array[0].length;y++){
+				arrayToFindD[x][y] = Math.abs(mean-array[x][y]);
+				
+			}
+		}
+	}
+
+
 }
