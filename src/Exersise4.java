@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.io.*;
-public class Exersise3 {
+public class Exersise4 {
 	
 	static Scanner scan = new Scanner(System.in);
 	static File hashMaze;
@@ -147,8 +147,8 @@ public class Exersise3 {
 		System.out.println("Current array:");
 		for(int col=0;col <array.length;col++){
 			for(int row=0;row<array[0].length;row++){
-				if(array[col][row] == true){System.out.print("#");}
-				else{System.out.print(" ");}
+				if(array[col][row] == true){System.out.print("#" + " ");}
+				else{System.out.print(" " + " ");}
 			}
 			System.out.println();
 		}
