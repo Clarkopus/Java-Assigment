@@ -8,7 +8,7 @@ public class Exersise4 {
 	static BufferedReader bf;
 	
 	public static void main(String[] arguments){
-		
+		//Test commit on new System. Ignore comment.
 		String filePath = "";
 		filePath = getFilePath(filePath);
 		int numberOfLines =0;
