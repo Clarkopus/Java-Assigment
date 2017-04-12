@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
@@ -23,14 +22,19 @@ public class Exercise1 {
 				scan.close();
 				break;
 			}
+			else if(order.equals("")){
+				System.out.println("An order must be placed");
+				continue;
+			}
 			
 			/* For loop is used to take each character and store them inside an array
 			 * this is so I can treat each option as a separate entity */
-			for(int x=0; x<order_seperated.length; x++){
+			for(int x=0; x<order.length(); x++){
 				
 				order_seperated[x] = Character.toString(order.charAt(x));
 			}
 			
+			if(!order_seperated[0].equals("m")){System.out.println("Pizza size wasn't found");continue;}
 			
 				switch(order_seperated[0]){
 				case "m":
@@ -44,10 +48,11 @@ public class Exercise1 {
 					formattedOrder +="Large pizza, ";
 					break;
 				default:
+					System.out.println("Order doesn't have pizza size");
 					break;
 				}
 			/* x is equal to one this time round to skip the first element */
-			for(int x=1;x<order_seperated.length;x++){
+			for(int x=1;x<order.length();x++){
 				switch(order_seperated[x]){
 				case"m":
 				case"M":
@@ -106,18 +111,23 @@ public class Exercise1 {
 					scan.close();
 					break;
 				}
+				
+				else if(order.equals("")){
+					System.out.println("An order must be placed");
+					continue;
+				}
 			
 				/* For loop is used to take each character and store them inside an array
 				 * this is so I can treat each option as a separate entity */
-				for(int x=0; x<order_seperated.length; x++){
+				for(int x=0; x<order.length(); x++){
 
 					order_seperated[x] = Character.toString(order.charAt(x));
 				}
 				/* Checks if the current order doesn't have more than three toppings */
-				for(int x =0; x<order_seperated.length;x++){
+				for(int x =0; x<order.length();x++){
 					String currentCharacter = order_seperated[x];
 					int count =0;
-					for(int i =0; i<order_seperated.length;i++){
+					for(int i =0; i<order.length();i++){
 						if (currentCharacter.equals(order_seperated[i])){
 							count++;
 						}
@@ -125,6 +135,8 @@ public class Exercise1 {
 					}
 					orderSeperated[x] = order_seperated[x];
 				}
+				if(!order_seperated[0].equals("m")){System.out.println("Pizza size wasn't found");continue;}
+				
 				if(checkValidOrder == true){
 				switch(orderSeperated[0]){
 				case "m":
@@ -141,7 +153,7 @@ public class Exercise1 {
 					break;
 				}
 			/* x is equal to one this time round to skip the first element */
-			for(int x=1;x<order_seperated.length;x++){
+			for(int x=1;x<order.length();x++){
 				switch(orderSeperated[x]){
 				case"m":
 				case"M":
@@ -188,8 +200,8 @@ public class Exercise1 {
 	
 	public static void main(String[] arguments){
 		
-		//pizzaServiceA();
-		pizzaServiceB();
+		pizzaServiceA();
+		//pizzaServiceB();
 	}
 
 	
