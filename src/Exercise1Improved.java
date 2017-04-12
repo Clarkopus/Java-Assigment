@@ -9,12 +9,13 @@ public class Exercise1Improved {
 	static String order;
 	static String[] orderSeperated;
 	static double totalPrice = 0.00;
+	static String formattedOrder = "";
 	
 	public static void pizzaServiceA(){
 		while(true){
 		orderSeperated = takeOrder();
 		if(orderSeperated == null)continue;
-		
+		printOrder();
 		}
 	}
 	
@@ -36,7 +37,11 @@ public class Exercise1Improved {
 			return null;
 		}
 		
-		orderToReturn = order.split("");
+		if(order.toLowerCase().equals("quit")){
+			System.out.println("Quitting");
+			System.exit(0);}
+		
+		orderToReturn = order.toLowerCase().split("");
 		
 		//order validation code
 		//all code below here is used to validate the array and check for errors
@@ -55,19 +60,74 @@ public class Exercise1Improved {
 			return null;
 		}
 		
-		//THIS ERROR CHECK NEEDS TO WORK. CONDITION ISN'T WORKING.
-		else if(!orderToReturn[0].equals("m")||!orderToReturn[0].equals("M")){
+		
+		else if(!orderToReturn[0].toLowerCase().equals("m") && !orderToReturn[0].toLowerCase().equals("l")){
 			System.out.println("A valid pizza size must be present");
 			return null;
 		}
-		//Add validation to check if current ingredents are valid
 		//End of validation code
-		else return orderToReturn;
+		return orderToReturn;
 	}
+	
 	/* Used to print the order
 	 * Returns a String with the formatted order and the price*/
-	public static String printOrder(){
-		return null;
+	public static void printOrder(){
+		formattedOrder = "";
+		totalPrice = 0.00;
+		switch(orderSeperated[0]){
+		case "m":
+		case "M":
+			formattedOrder += "Medium pizza, ";
+			totalPrice = 4.00;
+			break;
+		case "l":
+		case "L":
+			totalPrice = 5.00;
+			formattedOrder +="Large pizza, ";
+			break;
+		default:
+			System.out.println("Order doesn't have pizza size");
+			break;
+		}
+	/* x is equal to one this time round to skip the first element */
+	for(int x=1;x<order.length();x++){
+		switch(orderSeperated[x]){
+		case"m":
+		case"M":
+			formattedOrder +="Mozzerella, ";
+			if(orderSeperated[0].toLowerCase().equals("m"))totalPrice += 1.00;
+			else totalPrice += 1.50;
+			break;
+		case"h":
+		case"H":
+			formattedOrder +="Ham, ";
+			if(orderSeperated[0].toLowerCase().equals("h"))totalPrice += 1.40;
+			else totalPrice += 2.10;
+			break;
+		case"o":
+		case"O":
+			formattedOrder += "olives, ";
+			if(orderSeperated[0].toLowerCase().equals("m"))totalPrice += 0.80;
+			else totalPrice += 1.20;
+			break;
+		case"p":
+		case"P":
+			formattedOrder += "pineapple, ";
+			if(orderSeperated[0].toLowerCase().equals("p")) totalPrice += 1.00;
+			else totalPrice += 1.50;
+			break;
+		case"s":
+		case"S":
+			formattedOrder +="spinach, ";
+			if(orderSeperated[0].toLowerCase().equals("s"))totalPrice +=0.80;
+			else totalPrice += 1.20;
+			break;
+		default:
+			formattedOrder+="Unknown topping (" +orderSeperated[x] + "), ";
+		}
+		
+	}
+	System.out.println("Order: " + formattedOrder + "Total price: " + totalPrice);
 	}
 	
 	public static void main(String[] arguments){
