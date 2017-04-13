@@ -19,6 +19,7 @@ double longitude;
 		this.longitude = longitude;
 	}
 	
+	/* toString method to print out the Hill data */
 	public String toString(){
 		
 		return hillNumber + ", " + name + ", " + height + ", " + latitude + ", " + longitude + "\n";

@@ -25,7 +25,6 @@ public class Exersise4 {
 				//Get number of characters to init the number of characters hases has per row
 				numberOfCharacters = getNumberOfCharacters(numberOfCharacters, filePath);
 				array = new Boolean[numberOfLines][numberOfCharacters];
-				String[][] HashesFormatted = new String[numberOfLines][numberOfCharacters];
 				initBooleanArray(array,filePath);
 				printArray(array);
 		return array;
