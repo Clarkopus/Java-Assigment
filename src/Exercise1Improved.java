@@ -10,6 +10,7 @@ public class Exercise1Improved {
 	static String[] orderSeperated;
 	static double totalPrice = 0.00;
 	static String formattedOrder = "";
+	static Boolean bMethod;
 	
 	public static void pizzaServiceA(){
 		while(true){
@@ -20,7 +21,12 @@ public class Exercise1Improved {
 	}
 	
 	public static void pizzaServiceB(){
-		
+		bMethod = true;
+		while(true){
+			orderSeperated = takeOrder();
+			if(orderSeperated == null)continue;
+			printOrder();
+		}
 		
 	}
 	
@@ -45,7 +51,23 @@ public class Exercise1Improved {
 		
 		//order validation code
 		//all code below here is used to validate the array and check for errors
-		
+		if(bMethod = true){
+			
+		for(int x=0; x<order.length();x++){
+			String currentCharacter = orderToReturn[x];
+			int count =0;
+			for(int i=0;i<order.length();i++){
+				if(currentCharacter.equals(orderToReturn[i])){
+					count++;
+					
+				}
+				if(count ==3){
+					System.out.println("No more than two toppings per pizza");
+					return null;
+				}
+			}
+		}
+		}
 		//Checks to see if the selected topping's don't include spaces
 		for(int x=0; x<order.length();x++){
 			if(orderToReturn[x].equals(" ")){
@@ -132,6 +154,7 @@ public class Exercise1Improved {
 	
 	public static void main(String[] arguments){
 		
-		pizzaServiceA();
+		//pizzaServiceA();
+		pizzaServiceB();
 	}
 }

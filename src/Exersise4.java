@@ -8,23 +8,27 @@ public class Exersise4 {
 	static BufferedReader bf;
 	
 	public static void main(String[] arguments){
+		Boolean[][] hashes = null;
+		hashes = run(hashes);
+	}
+	
+	public static Boolean[][] run(Boolean[][] array){
 		//Test commit on new System. Ignore comment.
-		String filePath = "";
-		filePath = getFilePath(filePath);
-		int numberOfLines =0;
-		int numberOfCharacters = 0;
-		Boolean[][] hashes;
-		
-		//Get number of lines to init the number of rows hashes has
-		numberOfLines = getNumberOfLines(numberOfLines, filePath);
-		//Get number of characters to init the number of characters hases has per row
-		numberOfCharacters = getNumberOfCharacters(numberOfCharacters, filePath);
-		hashes = new Boolean[numberOfLines][numberOfCharacters];
-		String[][] HashesFormatted = new String[numberOfLines][numberOfCharacters];
-		initBooleanArray(hashes,filePath);
-		createHashArray(hashes,HashesFormatted);
-		printArray(hashes);
-		
+				String filePath = "";
+				filePath = getFilePath(filePath);
+				int numberOfLines =0;
+				int numberOfCharacters = 0;
+				
+				
+				//Get number of lines to init the number of rows hashes has
+				numberOfLines = getNumberOfLines(numberOfLines, filePath);
+				//Get number of characters to init the number of characters hases has per row
+				numberOfCharacters = getNumberOfCharacters(numberOfCharacters, filePath);
+				array = new Boolean[numberOfLines][numberOfCharacters];
+				String[][] HashesFormatted = new String[numberOfLines][numberOfCharacters];
+				initBooleanArray(array,filePath);
+				printArray(array);
+		return array;
 	}
 	
 	//Used to get the path of the file
@@ -127,20 +131,6 @@ public class Exersise4 {
 		
 	}
 	
-	public static String[][] createHashArray(Boolean[][] array, String[][] formattedArray){
-		
-		for(int col=0;col <array.length;col++){
-			for(int row=0;row<array[0].length;row++){
-				if (array[col][row] == true){
-					formattedArray[col][row] = "#";
-				}
-				else{
-					formattedArray[col][row] = " ";
-				}
-			}
-		}
-		return formattedArray;
-	}
 	//Used to print out the Boolean 2D array
 	public static void printArray(Boolean[][] array){
 		
