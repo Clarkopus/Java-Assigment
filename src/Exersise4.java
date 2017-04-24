@@ -6,6 +6,7 @@ public class Exersise4 {
 	static File hashMaze;
 	static FileReader fileReader;
 	static BufferedReader bf;
+	static String filePath = "";
 	
 	public static void main(String[] arguments){
 		Boolean[][] hashes = null;
@@ -14,7 +15,7 @@ public class Exersise4 {
 	
 	public static Boolean[][] run(Boolean[][] array){
 		//Test commit on new System. Ignore comment.
-				String filePath = "";
+				
 				filePath = getFilePath(filePath);
 				int numberOfLines =0;
 				int numberOfCharacters = 0;
@@ -88,6 +89,9 @@ public class Exersise4 {
 		return characters;
 	}
 	
+	// This method populates the boolean array.
+	// If the file contains a # character the array element will equal to true
+	// If the file contains a space (" ") the array element will equal to false
 	public static void initBooleanArray(Boolean[][] array, String filePath){
 		
 		try{
@@ -100,18 +104,15 @@ public class Exersise4 {
 			for(int col=0;col <array.length;col++){
 				line=bf.readLine();
 				if(line==null){break;}
-				System.out.println(line);
 				currentLine =line.split("");
 				
 				for(int row=0;row<array[0].length;row++){
 						if(currentLine[row].equals("#")){
 							array[col][row] = true;
-							System.out.println("Element " + array[col][row]);
 						}
 						
 						else{
 							array[col][row] = false;
-							System.out.println("Element " + array[col][row]);
 							}
 					
 				}
@@ -130,7 +131,7 @@ public class Exersise4 {
 		
 	}
 	
-	//Used to print out the Boolean 2D array
+	//Used to print out the Boolean 2D array to the console.
 	public static void printArray(Boolean[][] array){
 		
 		System.out.println("Current array:");

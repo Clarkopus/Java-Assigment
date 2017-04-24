@@ -5,6 +5,25 @@
 import java.util.Arrays;
 public class Exersise2  {
 	
+	public static void testClosestToMean(){
+		
+double[][] numbers = new double[3][4];
+		
+		numbers[0][0] = 3;
+		numbers[0][1] = -1;
+		numbers[0][2] = -4;
+		numbers[0][3] = 0;
+		numbers[1][0]= 5;
+		numbers[1][1] = -2;
+		numbers[1][2] = 9;
+		numbers[1][3] = 6;
+		numbers[2][0] =8; 
+		numbers[2][1] = 2;
+		numbers[2][2] = 4;
+		numbers[2][3] =-9;
+		int[] coords = closestToMean(numbers);
+		
+	}
 	/* Method to find mean and returns the position of the closest element */
 	public static int[] closestToMean (double[][] array){
 		double[][] difference = new double[3][4];
@@ -30,23 +49,7 @@ public class Exersise2  {
 	
 	public static void main(String[] arguments){
 		
-		double[][] numbers = new double[3][4];
-		
-		numbers[0][0] = 3;
-		numbers[0][1] = -1;
-		numbers[0][2] = -4;
-		numbers[0][3] = 0;
-		numbers[1][0]= 5;
-		numbers[1][1] = -2;
-		numbers[1][2] = 9;
-		numbers[1][3] = 6;
-		numbers[2][0] =8; 
-		numbers[2][1] = 2;
-		numbers[2][2] = 4;
-		numbers[2][3] =-9;
-		int[] coords = closestToMean(numbers);
-		
-		System.out.println("The co-ords for this element are: " + Arrays.toString(coords));
+		testClosestToMean();
 		
 	}
 	
